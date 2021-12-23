@@ -6,10 +6,8 @@ const knex = require("knex");
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-horizontal-67871",
-    user: "postgres",
-    password: "admin",
-    database: "smart-brain",
+    host: process.env.DATABASE_URL,
+    ssl: true,
   },
 });
 const register = require("./controllers/register");
