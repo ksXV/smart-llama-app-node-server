@@ -26,7 +26,7 @@ app.post("/signin", signin.handleSignIn(db, bcrypt));
 app.post("/register", register.handleRegister(db, bcrypt));
 app.put("/profile-picture", profile.updateProfilePicture(db));
 app.put("/image", image.updateEntries(db));
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 // app.get("/profile/:id", (req, res) => {
 //   const { id } = req.params;
 //   db.select("*")
