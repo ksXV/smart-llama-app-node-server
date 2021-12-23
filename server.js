@@ -21,7 +21,7 @@ const image = require("./controllers/image");
 db.select("*").from("users");
 app.use(express.json());
 app.use(cors());
-app.get("/", (req, res) => res.send(db.users));
+app.get("/", (req, res) => res.send("hellooooo"));
 app.post("/signin", signin.handleSignIn(db, bcrypt));
 app.post("/register", register.handleRegister(db, bcrypt));
 app.put("/profile-picture", profile.updateProfilePicture(db));
