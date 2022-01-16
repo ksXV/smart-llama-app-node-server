@@ -1,4 +1,4 @@
-const updateEntries = (db) => (req, res) => {
+const handleImage = (req, res, db) => {
   const { id } = req.body;
   db("users")
     .where("id", "=", id)
@@ -7,8 +7,9 @@ const updateEntries = (db) => (req, res) => {
     .then((entries) => {
       res.json(entries[0]);
     })
-    .catch((err) => res.status(400).json("error updating the entries"));
+    .catch((err) => res.status(400).json("unable to get entries"));
 };
+
 module.exports = {
-  updateEntries: updateEntries,
+  handleImage,
 };
