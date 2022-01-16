@@ -3,26 +3,26 @@ const app = express();
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const knex = require("knex");
-// const db = knex({
-//   client: "pg",
-//   connection: {
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//       rejectUnauthorized: false,
-//     },
-//   },
-// });
 const db = knex({
   client: "pg",
-  version: "7.2",
   connection: {
-    host: "127.0.0.1",
-    port: 5432,
-    user: "postgres",
-    password: "admin",
-    database: "smart-brain",
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
+// const db = knex({
+//   client: "pg",
+//   version: "7.2",
+//   connection: {
+//     host: "127.0.0.1",
+//     port: 5432,
+//     user: "postgres",
+//     password: "admin",
+//     database: "smart-brain",
+//   },
+// });
 const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
