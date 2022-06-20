@@ -10,28 +10,28 @@ import handleProfileGet from "./controllers/profile";
 import { handleImage, handleApiCall } from "./controllers/image";
 import handleProfileUpdate from "./controllers/updateProfile";
 import requireAuth from "./controllers/auth";
-
-// const db = knex({
-//   client: "pg",
-//   connection: {
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//       rejectUnauthorized: false,
-//     },
-//   },
-// });
 const app = express();
+
 const db = knex({
   client: "pg",
-  version: "7.2",
   connection: {
-    host: "127.0.0.1" || process.env.POSTGRES_HOST,
-    port: 5432,
-    user: "postgres" || process.env.POSTGRES_USER,
-    password: "admin" || process.env.POSTGRES_PASSWORD,
-    database: "smart-brain" || process.env.POSTGRES_DB,
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
+// const db = knex({
+//   client: "pg",
+//   version: "7.2",
+//   connection: {
+//     host: "127.0.0.1" || process.env.POSTGRES_HOST,
+//     port: 5432,
+//     user: "postgres" || process.env.POSTGRES_USER,
+//     password: "admin" || process.env.POSTGRES_PASSWORD,
+//     database: "smart-brain" || process.env.POSTGRES_DB,
+//   },
+// });
 
 app.use(morgan("combined"));
 app.use(express.json());
